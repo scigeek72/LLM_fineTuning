@@ -11,7 +11,27 @@ Resources on fine tuning LLMs on specific set of data
 
 -- Encoder type LLM is more suitable for Classification task (???) while Decoder type LLMs are more suitable for sentence generation (...WARNING: Verify this statement ... )
 
--- For large LLMs, such as the latest generative models, we can use "[Performance Efficient Fine Tuning approach]"(https://open.substack.com/pub/sebastianraschka/p/finetuning-large-language-models?r=3vdx8&selection=e351cc70-a86c-455d-8a90-281fd590ef85&utm_campaign=post-share-selection&utm_medium=web).
+-- For large LLMs, such as the latest generative models, we can use "[Parameter-Efficient Fine Tuning approach]"(https://open.substack.com/pub/sebastianraschka/p/finetuning-large-language-models?r=3vdx8&selection=e351cc70-a86c-455d-8a90-281fd590ef85&utm_campaign=post-share-selection&utm_medium=web) which is an attempt to reduce the cost associated with training LLMs such as GPTs and BERTs. Raschka's article: [Finetuning LLMs Efficiently with Adapters](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters) is an important article (and worth the read).
+
+## Notes from "Finetuning LLMs Efficiently with Adapters"
+
+LLMs such as BERT, GPTs, LLaMA are trained on large corpus of data but they may not perform well on domain specific areas (such as querying product manuals like ours). So finetuning these models on domain specific task will significantly improve their performance. However, they are expensive and time consuming. Hence the adea of "Parameter-Efficeint" finetuning methods.
+
+#### Parameter Efficient Finetuning (with adapters)
+
+The article is [here](https://magazine.sebastianraschka.com/p/finetuning-llms-with-adapters)
+
+Many different types of Parameter Efficient Finetuning exists (such as prompt and prefix tuning). 
+
+Key idea [Prompt Tuning]: add a small number of "new" parameters to a pretrained LLM and only finetune these newly added parameters (and keep the original weights of the LLM frozen) and this makes it cheaper to finetune than finetune the entire model (expensive). 
+
+
+Key idea [Adapters]: add "tunable layers to the transformer blocks" of LLM instead of modifying prompts as in prompt tuning. 
+
+
+
+
+
 
 -- 
 
